@@ -472,7 +472,7 @@ export default {
                 return new Response(allresult, {
                     status: 200,
                     headers: { 
-                        "Content-Disposition": `attachment; filename="${FileName}"`,
+                        "Content-Disposition": `attachment; filename*=utf-8''${encodeURIComponent(FileName)}; filename=${FileName}`,
                         "content-type": "text/plain; charset=utf-8",
                     },
                 });
