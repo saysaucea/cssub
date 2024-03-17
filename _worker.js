@@ -25,7 +25,7 @@ async function sendTelegramNotification(type, ip, add_data = "") {
 }
 
 // 定义 Cloudflare Workers 的处理函数
-export default {
+module.exports = {
     async fetch(request, env) {
         // 获取客户端 IP 地址
         const ip = request.headers.get('CF-Connecting-IP');
@@ -71,6 +71,7 @@ export default {
         let total = 99;//PB
         //let timestamp = now;
         let timestamp = 4102329600000;//2099-12-31
+        
         
 
         async function sendMessage(type, ip, add_data = "") {
