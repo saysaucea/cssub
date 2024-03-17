@@ -27,14 +27,6 @@ async function sendTelegramNotification(type, ip, add_data = "") {
 // 定义 Cloudflare Workers 的处理函数
 export default {
     async fetch(request, env) {
-        let mytoken= 'auto';//快速订阅访问入口, 留空则不启动快速订阅
-        // 设置优选地址，不带端口号默认443，不支持非TLS订阅生成
-        let addresses = [
-            'icook.tw:2053#优选域名',
-            'cloudflare.cfgo.cc#优选官方线路',
-        ];
-        // 其他变量和函数定义...
-
         // 获取客户端 IP 地址
         const ip = request.headers.get('CF-Connecting-IP');
         
@@ -42,7 +34,6 @@ export default {
         await sendTelegramNotification("#获取订阅", ip);
         
         // 添加用户提供的代码
-        // 部署完成后在网址后面加上这个，获取订阅器默认节点，/auto
         let mytoken= 'auto';//快速订阅访问入口, 留空则不启动快速订阅
         let addresses = [
             'icook.tw:2053#优选域名',
@@ -80,6 +71,7 @@ export default {
         let total = 99;//PB
         //let timestamp = now;
         let timestamp = 4102329600000;//2099-12-31
+        
 
         async function sendMessage(type, ip, add_data = "") {
             if ( BotToken !== '' && ChatID !== ''){
